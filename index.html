@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArzenX Development</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:black;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* 🌟 Falling Stars */
+.star{
+    position:fixed;
+    width:2px;
+    height:10px;
+    background:purple;
+    animation:fall linear infinite;
+    opacity:0.7;
+}
+@keyframes fall{
+    from{transform:translateY(-10px);}
+    to{transform:translateY(110vh);}
+}
+
+/* 💜 Rotating Ring */
+#ring{
+    position:fixed;
+    width:300px;
+    height:300px;
+    border:4px solid purple;
+    border-radius:50%;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    animation:spin 8s linear infinite;
+    opacity:0.2;
+    z-index:0;
+}
+@keyframes spin{
+    0%{transform:translate(-50%,-50%) rotate(0deg);}
+    100%{transform:translate(-50%,-50%) rotate(360deg);}
+}
+
+/* 🔥 Header */
+header{
+    text-align:center;
+    padding:80px 20px;
+    position:relative;
+    z-index:1;
+}
+header img{
+    width:120px;
+    margin-bottom:20px;
+}
+header h1{
+    font-size:3rem;
+    color:#b86bff;
+}
+
+/* 📦 Section */
+section{
+    padding:80px 10%;
+    position:relative;
+    z-index:1;
+}
+h2{
+    color:#b86bff;
+    margin-bottom:20px;
+}
+
+/* 🔘 Category Buttons */
+.buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin:30px 0;
+}
+.btn{
+    padding:10px 22px;
+    border-radius:25px;
+    border:2px solid purple;
+    color:white;
+    background:transparent;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+}
+.btn::before{
+    content:'';
+    position:absolute;
+    left:-100%;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(186,85,211,0.3);
+    transition:0.4s;
+}
+.btn:hover::before{
+    left:100%;
+}
+
+/* 👑 Owners */
+.owners{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+.card{
+    border:1px solid purple;
+    border-radius:15px;
+    padding:20px;
+    background:rgba(255,255,255,0.05);
+}
+
+/* 🚀 Projects */
+.project{
+    display:flex;
+    align-items:center;
+    gap:25px;
+    margin-top:30px;
+}
+.project img{
+    width:120px;
+}
+
+/* 📞 Contact */
+.contact a{
+    color:#b86bff;
+    text-decoration:none;
+}
+
+/* 🌌 Footer */
+footer{
+    text-align:center;
+    padding:30px;
+    opacity:0.7;
+}
+</style>
+</head>
+
+<body>
+
+<div id="ring"></div>
+
+<header>
+    <img src="arzenx-logo.png" alt="ArzenX Logo">
+    <h1>ArzenX Development</h1>
+</header>
+
+<section id="about">
+<h2>About ArzenX</h2>
+<p>
+ArzenX Development is a development server as well as a growing platform for developers to enhance their skills and shine on social media platforms.
+Providing free source codes and working on paid orders for very cheap and legitimate delivery.
+</p>
+
+<div class="buttons">
+<button class="btn" onclick="scrollToSection('projects')">Projects</button>
+<button class="btn" onclick="scrollToSection('owners')">Owners</button>
+<button class="btn" onclick="scrollToSection('contact')">Contact</button>
+</div>
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+
+<div class="project">
+<img src="aronix-logo.png">
+<div>
+<h3>Aronix</h3>
+<p>
+Aronix is an AIO and multipurpose Discord bot made to enhance server security, fun, and auto-moderation with over 290+ commands.
+</p>
+</div>
+</div>
+
+<p style="margin-top:30px;opacity:0.6;">More projects coming soon 🚀</p>
+</section>
+
+<section id="owners">
+<h2>Owners</h2>
+<div class="owners">
+
+<div class="card">
+<h3>Rex_King1</h3>
+<p>Website & Emoji Developer with 2+ years experience, worked on many projects.</p>
+</div>
+
+<div class="card">
+<h3>Arish</h3>
+<p>Bot & Website Developer, owner of Arelix Hosting, 2.5+ years experience.</p>
+</div>
+
+<div class="card">
+<h3>R3tract0</h3>
+<p>Discord Server Manager & Developer, managed and created many servers.</p>
+</div>
+
+<div class="card">
+<h3>Samir</h3>
+<p>Bot & Website Developer, owner of SpecX, 2.8+ years experience.</p>
+</div>
+
+</div>
+</section>
+
+<section id="contact" class="contact">
+<h2>Contact</h2>
+<p>Email : <a href="mailto:kaizogaming787@gmail.com">kaizogaming787@gmail.com</a></p>
+<p>Discord : <a href="https://discord.gg/ESsUdYyaKx" target="_blank">Join Server</a></p>
+</section>
+
+<footer>
+© 2026 ArzenX Development
+</footer>
+
+<script>
+// ⭐ Stars Generator
+for(let i=0;i<60;i++){
+    let star=document.createElement('div');
+    star.className='star';
+    star.style.left=Math.random()*100+'vw';
+    star.style.animationDuration=2+Math.random()*3+'s';
+    star.style.animationDelay=Math.random()*5+'s';
+    document.body.appendChild(star);
+}
+
+// 🔘 Scroll
+function scrollToSection(id){
+    document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>
+
